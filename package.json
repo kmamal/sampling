@@ -8,8 +8,18 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "test": "./scripts/run-tests.sh",
     "update-exports": "./scripts/update-exports.sh"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@kmamal/util": "^0.0.92"
+  },
+  "exports": {
+    "./beta": "./src/beta.js",
+    "./box": "./src/box.js",
+    "./normal": "./src/normal.js",
+    "./exponential": "./src/exponential.js",
+    "./gamma": "./src/gamma.js",
+    "./sphere": "./src/sphere.js"
+  }
 }
