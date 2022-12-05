@@ -6,19 +6,25 @@
     "type": "git",
     "url": "git@github.com:kmamal/sampling.git"
   },
-  "main": "src/index.js",
   "scripts": {
-    "update-exports": "./scripts/update-exports.sh"
+    "update-exports": "node ./scripts/update-exports.mjs"
   },
   "license": "MIT",
   "dependencies": {
-    "@kmamal/util": "^0.0.92"
+    "@kmamal/util": "^0.1.6"
+  },
+  "devDependencies": {
+    "@kmamal/testing": "^0.0.20"
   },
   "exports": {
     "./beta": "./src/beta.js",
     "./box": "./src/box.js",
     "./normal": "./src/normal.js",
     "./exponential": "./src/exponential.js",
+    "./quasi-random/latin-hypercube": "./src/quasi-random/latin-hypercube.js",
+    "./quasi-random/halton": "./src/quasi-random/halton.js",
+    "./quasi-random/offset": "./src/quasi-random/offset.js",
+    "./quasi-random/additive": "./src/quasi-random/additive.js",
     "./gamma": "./src/gamma.js",
     "./sphere": "./src/sphere.js"
   }
