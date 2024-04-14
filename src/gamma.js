@@ -1,21 +1,21 @@
-const { random } = require('@kmamal/util/random/random')
-const { sampleExponential } = require('./exponential')
-const { sampleNormal } = require('./normal')
+const { uniform } = require('@kmamal/util/random/uniform')
+const { _sampleExponential } = require('./exponential')
+const { _sampleNormal } = require('./normal')
 
-const sampleUnscaledGamma = (shape) => {
+const _sampleGamma = (shape) => {
 	let U
 	let V
 	let X
 	let Y
 
 	if (shape === 1) {
-		return sampleExponential(1)
+		return _sampleExponential()
 	}
 
 	if (shape < 1.0) {
 		for (;;) {
-			U = random()
-			V = sampleExponential(1)
+			U = uniform()
+			V = _sampleExponential()
 
 			if (U <= 1 - shape) {
 				X = U ** (1 / shape)
@@ -36,13 +36,13 @@ const sampleUnscaledGamma = (shape) => {
 	const c = 1 / Math.sqrt(9 * b)
 	for (;;) {
 		do {
-			X = sampleNormal()
+			X = _sampleNormal()
 			V = 1 + c * X
 		} while (V <= 0)
 
 		V *= V * V
 		X *= X
-		U = random()
+		U = uniform()
 		if (
 			U < 1 - 0.0331 * X * X
 			|| Math.log(U) < 0.5 * X + b * (1 - V + Math.log(V))
@@ -52,9 +52,9 @@ const sampleUnscaledGamma = (shape) => {
 	}
 }
 
-const sampleGamma = (shape, scale) => scale * sampleUnscaledGamma(shape)
+const sampleGamma = (shape, scale) => scale * _sampleGamma(shape)
 
 module.exports = {
-	sampleUnscaledGamma,
+	_sampleGamma,
 	sampleGamma,
 }

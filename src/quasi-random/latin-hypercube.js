@@ -1,8 +1,8 @@
 const { randInt } = require('@kmamal/util/random/rand-int')
-const { random } = require('@kmamal/util/random/random')
+const { uniform } = require('@kmamal/util/random/uniform')
 
 const randomPointsInDimensions = (numPoints, numDimensions, options) => {
-	const getRandom = options?.random ?? random
+	const getRandom = options?.random ?? uniform
 
 	const points = new Array(numPoints)
 	const width = 1 / numPoints

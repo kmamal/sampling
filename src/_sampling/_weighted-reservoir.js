@@ -1,11 +1,11 @@
-const { random } = require('@kmamal/util/random/random')
-const { Heap } = require('@kmamal/structs/heap')
+const { uniform } = require('@kmamal/util/random/uniform')
+const { Heap } = require('@kmamal/heap')
 const { identity } = require('@kmamal/util/function/identity')
 
 const getIndex = (x, i) => i
 
 const __sampleWeightedReservoir = async (dst, dstStart, iterable, n, selector, fn, options) => {
-	const getRandom = options?.random ?? random
+	const getRandom = options?.random ?? uniform
 
 	let index = 0
 	const heap = new Heap()
@@ -36,9 +36,9 @@ const __sampleWeightedReservoir = async (dst, dstStart, iterable, n, selector, f
 		}
 	}
 
-	let write_index = dstStart
+	let writeIndex = dstStart
 	while (heap.size > 0) {
-		dst[write_index++] = heap.pop().value
+		dst[writeIndex++] = heap.pop().value
 	}
 
 	return Math.min(index, n)

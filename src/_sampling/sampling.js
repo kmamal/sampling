@@ -1,8 +1,8 @@
-const { random } = require('@kmamal/util/random/random')
+const { uniform } = require('@kmamal/util/random/uniform')
 const { randInt } = require('@kmamal/util/random/rand-int')
 
 const __sample1 = function * (length, n, options) {
-	const getRandom = options?.random ?? random
+	const getRandom = options?.random ?? uniform
 
 	let remaining = n
 	for (let i = 0; i < length; i++) {
@@ -21,7 +21,7 @@ const __sample1 = function * (length, n, options) {
 }
 
 const __sample2 = function * (length, n, options) {
-	const getRandom = options?.random ?? random
+	const getRandom = options?.random ?? uniform
 
 	const skip = (remaining, initialyAvailable) => {
 		let available = initialyAvailable

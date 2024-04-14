@@ -1,4 +1,6 @@
-const { sampleNormal } = require('./normal')
+const { _sampleNormal } = require('./normal')
+
+// Generates surface points
 
 const sampleSphere = (n) => {
 	const values = new Array(n)
@@ -7,7 +9,7 @@ const sampleSphere = (n) => {
 	do {
 		sum = 0
 		for (let i = 0; i < n; i++) {
-			const x = sampleNormal()
+			const x = _sampleNormal()
 			values[i] = x
 			sum += x * x
 		}

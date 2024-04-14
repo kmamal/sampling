@@ -1,18 +1,18 @@
-const { random } = require('@kmamal/util/random/random')
-const { sampleUnscaledGamma } = require('./gamma')
+const { uniform } = require('@kmamal/util/random/uniform')
+const { _sampleGamma } = require('./gamma')
 
 const sampleBeta = (a, b) => {
 	if (a > 1 || b > 1) {
-		const x = sampleUnscaledGamma(a)
-		const y = sampleUnscaledGamma(b)
+		const x = _sampleGamma(a)
+		const y = _sampleGamma(b)
 		return x / (x + y)
 	}
 
 	// Johnk's algorithm
 
 	for (;;) {
-		const U = random()
-		const V = random()
+		const U = uniform()
+		const V = uniform()
 		const X = U ** (1 / a)
 		const Y = V ** (1 / b)
 

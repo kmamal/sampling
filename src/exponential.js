@@ -1,7 +1,10 @@
-const { random } = require('@kmamal/util/random/random')
+const { uniform } = require('@kmamal/util/random/uniform')
 
-const sampleUnscaledExponential = () => -Math.log(1.0 - random())
+const _sampleExponential = () => -Math.log(1 - uniform())
 
-const sampleExponential = (scale) => scale * sampleUnscaledExponential()
+const sampleExponential = (scale) => scale * _sampleExponential()
 
-module.exports = { sampleExponential }
+module.exports = {
+	_sampleExponential,
+	sampleExponential,
+}

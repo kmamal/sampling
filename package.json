@@ -4,17 +4,17 @@
   "description": "sampling",
   "repository": {
     "type": "git",
-    "url": "git@github.com:kmamal/sampling.git"
+    "url": "git+ssh://git@github.com:kmamal/sampling.git"
   },
   "scripts": {
     "update-exports": "node ./scripts/update-exports.mjs"
   },
   "license": "MIT",
   "dependencies": {
-    "@kmamal/util": "^0.1.6"
+    "@kmamal/util": "^0.2.4"
   },
   "devDependencies": {
-    "@kmamal/testing": "^0.0.20"
+    "@kmamal/testing": "^0.0.30"
   },
   "exports": {
     "./beta": "./src/beta.js",
@@ -25,6 +25,7 @@
     "./quasi-random/halton": "./src/quasi-random/halton.js",
     "./quasi-random/offset": "./src/quasi-random/offset.js",
     "./quasi-random/additive": "./src/quasi-random/additive.js",
+    "./poisson": "./src/poisson.js",
     "./gamma": "./src/gamma.js",
     "./sphere": "./src/sphere.js"
   }

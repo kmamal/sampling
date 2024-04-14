@@ -1,8 +1,8 @@
-const { random } = require('@kmamal/util/random/random')
+const { uniform } = require('@kmamal/util/random/uniform')
 
 class Offset {
 	constructor (start, options) {
-		this._random = options?.random ?? random
+		this._random = options?.random ?? uniform
 		this.start(start || 0)
 	}
 

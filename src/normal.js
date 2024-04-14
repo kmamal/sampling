@@ -1,9 +1,9 @@
-const { random } = require('@kmamal/util/random/random')
+const { uniform } = require('@kmamal/util/random/uniform')
 
 let hasSample = false
 let sample
 
-const sampleNormal = () => {
+const _sampleNormal = () => {
 	if (hasSample) {
 		hasSample = false
 		return sample
@@ -12,23 +12,28 @@ const sampleNormal = () => {
 	// Box-Muller transform
 
 	let r
-	let x1
-	let x2
+	let x
+	let y
 	do {
-		x1 = 2 * random() - 1
-		x2 = 2 * random() - 1
-		r = x1 * x1 + x2 * x2
+		x = 2 * uniform() - 1
+		y = 2 * uniform() - 1
+		r = x * x + y * y
 	}
 	while (r >= 1.0 || r === 0.0)
 
 	const f = Math.sqrt(-2.0 * Math.log(r) / r)
-	x1 *= f
-	x2 *= f
+	x *= f
+	y *= f
 
-	sample = x1
+	sample = y
 	hasSample = true
 
-	return x2
+	return x
 }
 
-module.exports = { sampleNormal }
+const sampleNormal = (m, s) => m + s * _sampleNormal()
+
+module.exports = {
+	_sampleNormal,
+	sampleNormal,
+}

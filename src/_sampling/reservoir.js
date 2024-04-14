@@ -1,4 +1,4 @@
-const { random } = require('@kmamal/util/random/random')
+const { uniform } = require('@kmamal/util/random/uniform')
 const { rand } = require('@kmamal/util/random/rand')
 const { identity } = require('@kmamal/util/function/identity')
 
@@ -39,7 +39,7 @@ const __sampleReservoir2 = async (dst, dstStart, iterable, n, selector, options)
 		dst[writeIndex++] = selector(value, index++)
 	}
 
-	const getRandom = options?.random ?? random
+	const getRandom = options?.random ?? uniform
 	let W = Math.exp(Math.log(getRandom()) / n)
 
 	for (;;) {
